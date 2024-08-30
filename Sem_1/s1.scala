@@ -1,5 +1,5 @@
 /*
-chcp 65001 && spark-shell -i \Users\HYPERPC\Desktop\IT\ETL\s1.scala --conf "spark.driver.extraJavaOptions=-Dfile.encoding=utf-8"
+chcp 65001 && spark-shell -i \Users\HYPERPC\Desktop\IT\ETL\Sem_1\s1.scala --conf "spark.driver.extraJavaOptions=-Dfile.encoding=utf-8"
 */
 import org.apache.spark.internal.Logging
 import org.apache.spark.sql.functions.{col, collect_list, concat_ws}
@@ -19,10 +19,10 @@ var df1 = spark.read.format("com.crealytics.spark.excel")
         .option("excerptSize", 10)
         .option("header", "true")
         .format("excel")
-        .load("/Users/HYPERPC/Desktop/IT/ETL/Сем1.xlsx")
+        .load("/Users/HYPERPC/Desktop/IT/ETL/Sem_1/Сем1.xlsx")
 		df1.show()
 		df1.filter(df1("Код предмета").isNotNull).select("Код предмета","Предмет","Учитель")
-		.write.format("jdbc").option("url","jdbc:mysql://localhost:3306/spark?user=root&password=anna^2506")
+		.write.format("jdbc").option("url","jdbc:mysql://localhost:3306/spark?user=root&password=anna^2506^")
         .option("driver", "com.mysql.cj.jdbc.Driver").option("dbtable", "tasketl1a")
         .mode("overwrite").save()
 		import org.apache.spark.sql.expressions.Window

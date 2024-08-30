@@ -24,12 +24,12 @@ if(1==1){
 		.load("/Users/HYPERPC/Desktop/IT/ETL/Homework/DZ_3/s3.xlsx")
 
 	val df1 = df
-		df1.write.format("jdbc").option("url","jdbc:mysql://localhost:3306/spark?user=root&password=anna^2506")
+		df1.write.format("jdbc").option("url","jdbc:mysql://localhost:3306/spark?user=root&password=anna^2506^")
         .option("driver", "com.mysql.cj.jdbc.Driver").option("dbtable", "DZ_3t1")
 			.mode("overwrite").save()
 	df1.show()
 
-    val df2 = spark.read.format("jdbc").option("url","jdbc:mysql://localhost:3306/spark?user=root&password=anna^2506")
+    val df2 = spark.read.format("jdbc").option("url","jdbc:mysql://localhost:3306/spark?user=root&password=anna^2506^")
         .option("driver", "com.mysql.cj.jdbc.Driver")
         .option("dbtable", "DZ_3t1")
         .load()
@@ -65,7 +65,7 @@ if(1==1){
         .withColumn("Timers", coalesce(col("Timers"), lit(0)))
         .withColumn("Timers", round(col("Timers"), 4))
 
-    df_result.write.format("jdbc").option("url","jdbc:mysql://localhost:3306/spark?user=root&password=anna^2506")
+    df_result.write.format("jdbc").option("url","jdbc:mysql://localhost:3306/spark?user=root&password=anna^2506^")
         .option("driver", "com.mysql.cj.jdbc.Driver").option("dbtable", "DZ_3t2")
 		.mode("overwrite").save()
     df_result.show()
